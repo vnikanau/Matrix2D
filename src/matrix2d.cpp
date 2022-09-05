@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include "matrix2d.h"
 #include "exception.h"
 
