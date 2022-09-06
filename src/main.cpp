@@ -1,12 +1,12 @@
 #include "matrix2d.h"
 
 int main()
-{
+{    
     // create a few matrices with initialization list
-    Matrix2D a {{1.5, 2.3, 3.1}, {5.8, 6.4, 4.2}, {4.3, 8.5, 4.7}};
+    Matrix2D<double> a {{1.5, 2.3, 3.1}, {5.8, 6.4, 4.2}, {4.3, 8.5, 4.7}};
     // missing values ​​are filled with zeros
-    Matrix2D b {{0.2, 1.0, 3.1}, {6.6, 7.3, 4.4}, {8.8, 2.1}};
-    Matrix2D c {{1.0, 3.3}, {6.8, 1.4}, {1.8, 9.2}, {6.4, 7.4}};
+    Matrix2D<double> b {{0.2, 1.0, 3.1}, {6.6, 7.3, 4.4}, {8.8, 2.1}};
+    Matrix2D<double> c {{1.0, 3.3}, {6.8, 1.4}, {1.8, 9.2}, {6.4, 7.4}};
     
     std::cout << "Matrix a: " << std::endl;
     a.print();
@@ -67,7 +67,7 @@ int main()
     
     std::cout << std::endl << "Copy operator b -> b1:" << std::endl;
     
-    Matrix2D b1;
+    Matrix2D<double> b1;
     b1 = b;
     b1.print();
     
@@ -87,7 +87,7 @@ int main()
     
     std::cout << std::endl << "Move operator b -> b1:" << std::endl;
     
-    Matrix2D b2;
+    Matrix2D<double> b2;
     b2 = std::move( b1 );
     b2.print();
     
@@ -105,22 +105,22 @@ int main()
     
     try
     {
-        std::cout << "Set a[{1, 5}] = 70.0" << std::endl;
+        std::cout << "Try to set a[{1, 5}] = 70.0" << std::endl;
         a[{1, 5}] = 70.0;
     }
     catch( const exception& e )
     {
-        cerr << std::endl << e.what() << std::endl;
+        cerr << e.what() << std::endl;
     }
     
     try
     {
-        std::cout << "Set a[{5, 1}] = 10.0" << std::endl;
+        std::cout << std::endl << "Try to set a[{5, 1}] = 10.0" << std::endl;
         a[{5, 1}] = 10.0;
     }
     catch( const exception& e )
     {
-        cerr << std::endl << e.what() << std::endl;
+        cerr << e.what() << std::endl;
     }
     
     std::cout << std::endl << "Indexing in style a[1][1] = " << a[1][1] << std::endl;
@@ -131,12 +131,12 @@ int main()
     
     try
     {
-        std::cout << "Set a[5][1] = 11.0" << std::endl;
+        std::cout << "Try to set a[5][1] = 11.0" << std::endl;
         a[5][1] = 11.0;
     }
     catch( const exception& e )
     {
-        cerr << std::endl << e.what() << std::endl;
+        cerr << e.what() << std::endl;
     }
     
     return 0;
